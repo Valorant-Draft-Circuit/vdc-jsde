@@ -1,10 +1,12 @@
 # Repository files #############################################
 .vscode
 .env
+.gitmodules
 ################################################################
 
 # Ignore all compiled & generated files. #######################
-
+utils/enums/*.js
+prisma/*.js
 # These will be compiled/generated locally & on deployment #####
 ################################################################
 
