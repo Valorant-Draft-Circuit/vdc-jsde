@@ -3,7 +3,15 @@
   "version": "1.0.0",
   "description": "A barebones Javascript Development Enviornment for the Valorant Draft Circuit.",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev0": "nodemon ./src/agentFrequency.js --no-warnings --ignore bin/",
+
+    
+    "compile": "clear && tsc ./utils/enums/index && tsc ./prisma/index",
+    "clean": "rm ./enums/*.js && find ./prisma/*.js ! -name prismadb.js -delete",
+
+
+    "generate": "npx prisma db pull && npx prisma generate",
+    "studio": "prisma studio"
   },
   "author": "Rohan Gupta",
   "license": "ISC",
@@ -13,6 +21,12 @@
     "dotenv": "^16.4.1"
   },
   "devDependencies": {
-    "nodemon": "^3.0.3"
-  }
+    "@types/node": "^20.11.13",
+    "nodemon": "^3.0.3",
+    "prisma": "^5.8.1"
+  },
+  "extensionPack": [
+    "pkief.material-icon-theme",
+    "prisma.prisma"
+  ]
 }
