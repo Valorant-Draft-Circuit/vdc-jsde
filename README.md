@@ -17,7 +17,7 @@ Then, run the following commands in the terminal window for the repo- you can op
 | Step | Command | Notes |
 | -- | -- | -- |
 | Install all the required node modules | `npm install` |  |
-| Add the prisma files | `git submodule add https://github.com/Valorant-Draft-Circuit/vdc-prisma-submodule prisma` | Will create the `./prisma` folder in your root directory |
+| Add the prisma files | `git submodule add -f https://github.com/Valorant-Draft-Circuit/vdc-prisma-submodule prisma` | Will create the `./prisma` folder in your root directory |
 | Pull & generate the database | `npm run generate` | Will likely ask to "install the following packages: prisma@X.X.X". This is normal, should only happen once. |
 | Install TypeScript | `npm install -D typescript` | This is required to compile Typescript to Javascript |
 | Compile the TypeScript files | `npm run compile` | Will create a bunch of `*.js` files in `./prisma/` and `./enums/` |

@@ -6,7 +6,7 @@
     "dev0": "nodemon ./src/agentFrequency.js --no-warnings --ignore bin/",
 
     
-    "compile": "tsc ./utils/enums/index && tsc ./prisma/index",
+    "compile": "(cls || clear) && tsc ./utils/enums/index && tsc ./prisma/index",
     "clean": "rm ./enums/*.js && find ./prisma/*.js ! -name prismadb.js -delete",
 
 
