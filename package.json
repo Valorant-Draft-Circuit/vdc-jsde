@@ -9,9 +9,10 @@
     "compile": "(cls || clear) && tsc ./utils/enums/index && tsc ./prisma/index",
     "clean": "rm ./enums/*.js && find ./prisma/*.js ! -name prismadb.js -delete",
 
+    "push": "(cls || clear) && node ./src/dropDatabase.js && npx prisma db push",
 
     "generate": "npx prisma db pull && npx prisma generate",
-    "studio": "prisma studio"
+    "studio": "(cls || clear) && npx prisma studio"
   },
   "author": "Rohan Gupta",
   "license": "ISC",
