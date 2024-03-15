@@ -17,7 +17,7 @@ Then, run the following commands in the terminal window for the repo- you can op
 | Step | Command | Notes |
 | -- | -- | -- |
 | Install all the required node modules | `npm install` |  |
-| Add the prisma files | `git submodule add -f https://github.com/Valorant-Draft-Circuit/vdc-prisma-submodule prisma` | Will create the `./prisma` folder in your root directory |
+| Add the prisma files | `git submodule add -f https://github.com/Valorant-Draft-Circuit/vdc-prisma prisma` | Will create the `./prisma` folder in your root directory |
 | Pull & generate the database | `npm run generate` | Will likely ask to "install the following packages: prisma@X.X.X". This is normal, should only happen once. |
 | Install TypeScript | `npm install -D typescript` | This is required to compile Typescript to Javascript |
 | Compile the TypeScript files | `npm run compile` | Will create a bunch of `*.js` files in `./prisma/` and `./enums/` |
@@ -59,7 +59,12 @@ When you add this below, you'll still be able to use variables scoped outside th
 ### Using the Prisma Wrapper Library
 I've spent a lot of time creating the Prisma Wrapper Library to make it easier to get information from the database in a way that makes sense, without having to learn syntax for prisma. Ler's use one of those below:
 
-Within the function we created above (in the code goes here section), let's put in the following lines
+Within the function we created above (in the code goes here section), let's put in the following lines:
+Put this at the top of the file with the other require statements
+```js
+const { Player } = require(`../prisma`);
+```
+and this in the async block:
 ```js
 const subs = await Player.getAllSubs();
 fs.writeFileSync(`./bin/subs.json`, JSON.stringify(subs, null, 4))
@@ -71,6 +76,7 @@ You can see how the `async` declararion comes in handy here- we need to `AWAIT` 
 If you've done everything correctly, your file should look something like this:
 ```js
 const { PrismaClient } = require(`@prisma/client`);
+const { Player } = require(`../prisma`);
 const fs = require(`fs`);
 
 const prisma = new PrismaClient();
