@@ -11,7 +11,7 @@
 
     "push": "(cls || clear) && npx prisma db push",
 
-    "generate": "npx prisma db pull && npx prisma generate",
+    "generate": "npx prisma generate",
     "studio": "(cls || clear) && npx prisma studio"
   },
   "author": "Rohan Gupta",
