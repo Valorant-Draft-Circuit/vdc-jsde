@@ -1,5 +1,5 @@
 # VDC - JavaScript Development Environment
-A barebones Javascript Development Enviornment for the Valorant Draft Circuit.
+A barebones Javascript Development Enviornment for Valorant Draft Circuit.
 
 ## Getting Started
 To begin development, there's a couple steps you'll first need to take.
@@ -30,10 +30,10 @@ To see an example, I've included a script that can take an array of players and 
 
 ## Writing your first script
 ### Creating the file
-Let's say we want to generate a report on the subs we have in VDC. First, let's create a new file in `./src/` and call it `vdcSubs.js`.
+Let's say we want to generate a report on the subs we have in VDC. First, let's create a new file in `./src/` and call it `subs.js`.
 
 ### Adding  common require statements
-In that new file, let's copy the following lines of code. There's a high chance every script with use the `PrismaClient` if you do custom database calls, and to write to a file, the `fs` module is necessary. You can of coourse import additional modules like `@napi-rs/canvas` if you are working on generating images but for this example, we'll stick with what we have below.
+In that new file, let's copy the following lines of code. There's a high chance that every script will use the `PrismaClient` if you do custom database calls, and to write to a file, the `fs` module is necessary. You can of course import additional modules like `@napi-rs/canvas` if you are working on generating images but for this example, we'll stick with what we have below.
 
 ```js
 const { PrismaClient } = require(`@prisma/client`);
@@ -47,7 +47,7 @@ console.clear();
 
 
 ### Anonymous Functions
-Javascript has something it calls "Anonymous Functions", which are nameless functions. Generally these aren't going to be used in code or any production atmosphere, but since we don't have a way to `await` for code without it being wrapped within an `async` function, we'll add an Anonymous [Asynchronous Function Declaration](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) here.
+Javascript has something it calls "Anonymous Functions", which are nameless functions. Generally these aren't going to be used in code or any production atmosphere, but since we don't have a way to [`await`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/await) for code without it being wrapped within an `async` function, we'll add an Anonymous [Asynchronous Function Declaration](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function) here.
 
 ```js
 (async () => {
@@ -57,7 +57,7 @@ Javascript has something it calls "Anonymous Functions", which are nameless func
 When you add this below, you'll still be able to use variables scoped outside the block, but variables defined within this cannot be used outside this block. For more info, I'd reccomend doing some reading on [Variable Scoping](https://www.w3schools.com/js/js_scope.asp).
 
 ### Using the Prisma Wrapper Library
-I've spent a lot of time creating the Prisma Wrapper Library to make it easier to get information from the database in a way that makes sense, without having to learn syntax for prisma. Ler's use one of those below:
+I've spent a lot of time creating the Prisma Wrapper Library to make it easier to get information from the database in a way that makes sense, without having to learn syntax for prisma. Let's use one of those below:
 
 Within the function we created above (in the code goes here section), let's put in the following lines:
 Put this at the top of the file with the other require statements
@@ -69,7 +69,7 @@ and this in the async block:
 const subs = await Player.getAllSubs();
 fs.writeFileSync(`./bin/subs.json`, JSON.stringify(subs, null, 4))
 ```
-You can see how the `async` declararion comes in handy here- we need to `AWAIT` for the data to get back to us from the database, and THEN we can write that info to a file.
+You can see how the `async` declararion comes in handy here- we need to [`await`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/await) for the data to get back to us from the database, and THEN we can write that info to a file.
 
 
 ### Putting it all together
@@ -99,4 +99,4 @@ in our example, the `"scripts"` [`package.json`](./package.json) file, should in
 
 Congratulations, you should be done now! This should run and create a new file in `./bin/` called `subs.json` with every sub that VDC has!
 
-Good luck on your projects! Happy Coding!
+Good luck on your projects! Happy coding!
